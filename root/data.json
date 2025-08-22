@@ -1,0 +1,43 @@
+{
+  "Fahrzeuge": [
+    {
+      "id": "lf20",
+      "title": "Löschgruppenfahrzeug 20",
+      "image": "img/lf20.jpg",
+      "short": "Hauptlöschfahrzeug mit 2000l Tank",
+      "long": "Das LF20 ist das wichtigste Löschfahrzeug. Es besitzt einen 2000l Wassertank, eine Schnellangriffseinrichtung und Atemschutzgeräte im Mannschaftsraum."
+    },
+    {
+      "id": "elw1",
+      "title": "Einsatzleitwagen 1",
+      "image": "img/elw1.jpg",
+      "short": "Mobiler Einsatzleitplatz",
+      "long": "Der ELW1 dient der Einsatzleitung und verfügt über moderne Funktechnik, Sat-Anlage und Arbeitsplätze für die Lageführung."
+    }
+  ],
+  "Personen": [
+    {
+      "id": "max",
+      "title": "Max Muster",
+      "image": "img/max.jpg",
+      "short": "Zugführer seit 2019",
+      "long": "Max Muster ist seit 2015 Mitglied. Seit 2019 ist er Zugführer und verantwortlich für die Einsatzleitung."
+    },
+    {
+      "id": "anna",
+      "title": "Anna Schmidt",
+      "image": "img/anna.jpg",
+      "short": "Sanitäterin & Ausbilderin",
+      "long": "Anna Schmidt ist Sanitäterin und bildet regelmäßig die Kameraden in Erster Hilfe aus."
+    }
+  ],
+  "Einsätze": [
+    {
+      "id": "brand2020",
+      "title": "Großbrand 2020",
+      "image": "img/brand.jpg",
+      "short": "Wohnhausbrand in der Innenstadt",
+      "long": "Im Jahr 2020 kam es zu einem Großbrand. Mehrere Fahrzeuge waren im Einsatz, es wurden keine Personen verletzt."
+    }
+  ]
+}
