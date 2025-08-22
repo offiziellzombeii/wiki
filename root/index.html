@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mein Wiki</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <h1>📖 Wiki</h1>
+    <ul id="menu"></ul>
+  </nav>
+
+  <main id="content">Lade Inhalte...</main>
+
+  <script>
+    let wikiData = {};
+
+    async function loadData() {
+      let res = await fetch("data.json");
+      wikiData = await res.json();
+      buildMenu();
+      renderPage();
+    }
+
+    function buildMenu() {
+      let menu = document.getElementById("menu");
+      menu.innerHTML = "";
+      for (let category of Object.keys(wikiData)) {
+        let li = document.createElement("li");
+        li.innerHTML = `<a href="#${category}">${category}</a>`;
+        menu.appendChild(li);
+      }
+    }
+
+    function renderPage() {
+      let hash = location.hash.substring(1);
+      let [category, entry] = hash.split("/");
+
+      if (!category) {
+        document.getElementById("content").innerHTML =
+          "<h2>Willkommen im Wiki 🎉</h2><p>Wähle eine Kategorie links im Menü.</p>";
+        return;
+      }
+
+      if (!entry) {
+        renderCategory(category);
+      } else {
+        renderEntry(category, entry);
+      }
+    }
+
+    function renderCategory(category) {
+      let data = wikiData[category];
+      if (!data) return;
+
+      let html = `<h2>${category}</h2>`;
+      for (let item of data) {
+        html += `
+          <div class="card">
+            <img src="${item.image}" alt="${item.title}">
+            <div>
+              <h3><a href="#${category}/${item.id}">${item.title}</a></h3>
+              <p>${item.short}</p>
+            </div>
+          </div>
+        `;
+      }
+      document.getElementById("content").innerHTML = html;
+    }
+
+    function renderEntry(category, id) {
+      let data = wikiData[category].find(x => x.id === id);
+      if (!data) return;
+
+      let html = `
+        <h2>${data.title}</h2>
+        <img src="${data.image}" alt="${data.title}" style="max-width:400px;border-radius:8px;">
+        <p>${data.long}</p>
+      `;
+      document.getElementById("content").innerHTML = html;
+    }
+
+    window.addEventListener("hashchange", renderPage);
+    window.addEventListener("load", loadData);
+  </script>
+</body>
+</html>
